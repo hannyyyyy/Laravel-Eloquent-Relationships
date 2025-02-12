@@ -22,8 +22,9 @@ return new class extends Migration
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
         });
+        // membuat tabel failed_jobs di database, yang digunakan oleh Laravel untuk menyimpan informasi tentang job yang gagal dieksekusi
     }
-
+ 
     /**
      * Reverse the migrations.
      *

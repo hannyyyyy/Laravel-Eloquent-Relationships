@@ -7,29 +7,42 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migrasi untuk membuat tabel 'phones'.
      *
      * @return void
      */
     public function up()
-{
-    Schema::create('phones', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedBigInteger('user_id');
-        $table->string('phone');
-        $table->timestamps();
+    {
+        // Membuat tabel 'phones' dengan kolom-kolom yang diperlukan
+        Schema::create('phones', function (Blueprint $table) {
+            // Menambahkan kolom 'id' sebagai primary key yang auto-incrementing
+            $table->id();
+            
+            // Menambahkan kolom 'user_id' yang akan merujuk ke tabel 'users'
+            // Kolom ini menyimpan ID pengguna yang memiliki nomor telepon
+            $table->unsignedBigInteger('user_id');
+            
+            // Menambahkan kolom 'phone' untuk menyimpan nomor telepon
+            $table->string('phone');
+            
+            // Menambahkan kolom 'timestamps' untuk menyimpan waktu pembuatan dan pembaruan data
+            $table->timestamps();
 
-        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-    });
-}
+            // Menambahkan foreign key constraint untuk 'user_id'
+            // Menghubungkan kolom 'user_id' ke kolom 'id' pada tabel 'users'
+            // Menambahkan onDelete('cascade') yang menghapus nomor telepon terkait saat pengguna dihapus
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
 
     /**
-     * Reverse the migrations.
+     * Membalikkan perubahan yang dilakukan pada metode 'up'.
      *
      * @return void
      */
     public function down()
     {
+        // Menghapus tabel 'phones' jika migrasi dibatalkan
         Schema::dropIfExists('phones');
     }
 };

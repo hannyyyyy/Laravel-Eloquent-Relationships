@@ -2,13 +2,14 @@
 
 namespace App\Providers;
 
+// Import Service Provider untuk sistem otentikasi dan otorisasi Laravel
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The model to policy mappings for the application.
+     * Pemetaan model ke kebijakan (policy) otorisasi aplikasi.
      *
      * @var array<class-string, class-string>
      */
@@ -17,14 +18,15 @@ class AuthServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register any authentication / authorization services.
+     * Mendaftarkan layanan otentikasi dan otorisasi.
      *
      * @return void
      */
     public function boot()
     {
+        // Mendaftarkan kebijakan (policies) yang telah didefinisikan
         $this->registerPolicies();
 
-        //
+        // Di sini bisa ditambahkan aturan otorisasi tambahan menggunakan Gate
     }
 }

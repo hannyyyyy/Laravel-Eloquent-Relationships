@@ -11,41 +11,46 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * The path to the "home" route for your application.
+     * Path default setelah login berhasil.
      *
-     * Typically, users are redirected here after authentication.
+     * Biasanya pengguna akan diarahkan ke path ini setelah berhasil login.
      *
      * @var string
      */
     public const HOME = '/home';
 
     /**
-     * Define your route model bindings, pattern filters, and other route configuration.
+     * Mendaftarkan binding model, filter pola, dan konfigurasi rute lainnya.
      *
      * @return void
      */
     public function boot()
     {
+        // Mengonfigurasi pembatasan kecepatan (rate limiting)
         $this->configureRateLimiting();
 
+        // Mendefinisikan grup rute untuk API dan Web
         $this->routes(function () {
+            // Rute API
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            // Rute Web
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
     }
 
     /**
-     * Configure the rate limiters for the application.
+     * Mengonfigurasi pembatasan kecepatan (rate limiting) untuk aplikasi.
      *
      * @return void
      */
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
+            // Membatasi permintaan API hingga 60 kali per menit berdasarkan ID pengguna atau IP.
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }

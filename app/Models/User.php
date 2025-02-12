@@ -59,6 +59,8 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_role');
+        return $this->belongsToMany(Role::class, 'user_role'); // Relasi many-to-many dengan tabel pivot 'user_role'
+        // user_id → Merujuk ke tabel users
+        //role_id → Merujuk ke tabel roles
     }
 }

@@ -7,26 +7,33 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migrasi untuk membuat tabel 'roles'.
      *
      * @return void
      */
     public function up()
-{
-    Schema::create('roles', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->timestamps();
-    });
-}
+    {
+        // Membuat tabel 'roles' untuk menyimpan data peran pengguna
+        Schema::create('roles', function (Blueprint $table) {
+            // Menambahkan kolom 'id' sebagai primary key dengan auto-increment
+            $table->id();
+            
+            // Menambahkan kolom 'name' untuk menyimpan nama peran (contoh: 'admin', 'editor', 'user')
+            $table->string('name');
+            
+            // Menambahkan kolom 'created_at' dan 'updated_at' secara otomatis
+            $table->timestamps();
+        });
+    }
 
     /**
-     * Reverse the migrations.
+     * Membalikkan perubahan yang dilakukan oleh metode 'up'.
      *
      * @return void
      */
     public function down()
     {
+        // Menghapus tabel 'roles' jika migrasi dibatalkan
         Schema::dropIfExists('roles');
     }
 };

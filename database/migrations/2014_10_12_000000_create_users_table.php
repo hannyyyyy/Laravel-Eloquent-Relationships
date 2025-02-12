@@ -22,6 +22,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        // Kode ini digunakan untuk membuat tabel users dengan kolom yang umum digunakan dalam sistem autentikasi pengguna di Laravel.
+        // Menggunakan fungsi Schema::create() untuk mendefinisikan struktur tabel, dan $table->timestamps(), $table->rememberToken(), serta $table->string() untuk kolom-kolom yang relevan.
+        // Fungsi up() akan mengeksekusi migrasi, sementara down() digunakan untuk membatalkan migrasi.
     }
 
     /**
