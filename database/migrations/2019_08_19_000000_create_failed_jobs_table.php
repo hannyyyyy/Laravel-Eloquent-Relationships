@@ -7,26 +7,39 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migration untuk membuat tabel "failed_jobs".
+     * Tabel ini digunakan oleh Laravel untuk mencatat pekerjaan (job) yang gagal dalam sistem queue.
      *
      * @return void
      */
     public function up()
     {
         Schema::create('failed_jobs', function (Blueprint $table) {
+            // ID auto-increment sebagai primary key
             $table->id();
+
+            // UUID unik untuk setiap job yang gagal, berguna untuk tracking
             $table->string('uuid')->unique();
+
+            // Nama koneksi queue yang digunakan saat job dijalankan
             $table->text('connection');
+
+            // Nama queue tempat job tersebut berjalan
             $table->text('queue');
+
+            // Data payload dari job yang gagal (isi lengkap dari job tersebut)
             $table->longText('payload');
+
+            // Informasi error atau exception yang menyebabkan job gagal
             $table->longText('exception');
+
+            // Timestamp waktu job gagal, menggunakan waktu saat ini secara default
             $table->timestamp('failed_at')->useCurrent();
         });
-        // membuat tabel failed_jobs di database, yang digunakan oleh Laravel untuk menyimpan informasi tentang job yang gagal dieksekusi
     }
- 
+
     /**
-     * Reverse the migrations.
+     * Membatalkan migration dengan menghapus tabel "failed_jobs".
      *
      * @return void
      */
