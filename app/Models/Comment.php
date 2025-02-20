@@ -10,12 +10,13 @@ class Comment extends Model
     use HasFactory; // Mengaktifkan fitur factory untuk model ini
     
     /**
-     * post
+     * Relasi dengan model Post.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function post()
     {
+        // Sebuah komentar (Comment) dimiliki oleh satu postingan (Post)
         return $this->belongsTo(Post::class); 
     }
 }
