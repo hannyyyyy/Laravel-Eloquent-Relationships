@@ -7,24 +7,27 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migration untuk membuat tabel "password_resets".
      *
      * @return void
      */
     public function up()
     {
         Schema::create('password_resets', function (Blueprint $table) {
+            // Kolom email pengguna yang ingin mereset password
+            // Ditandai sebagai index agar pencarian lebih cepat
             $table->string('email')->index();
+
+            // Token unik untuk reset password
             $table->string('token');
+
+            // Waktu ketika token dibuat, bisa null jika belum digunakan
             $table->timestamp('created_at')->nullable();
         });
-        // Kode ini digunakan untuk membuat tabel password_resets yang menyimpan informasi reset password untuk pengguna.
-        // Tabel ini memiliki kolom email, token, dan created_at, yang digunakan untuk menangani proses reset password.
-        // Fungsi up() digunakan untuk membuat tabel, dan fungsi down() bisa digunakan untuk membalikkan perubahan tersebut.
     }
 
     /**
-     * Reverse the migrations.
+     * Membatalkan migration dengan menghapus tabel "password_resets".
      *
      * @return void
      */
