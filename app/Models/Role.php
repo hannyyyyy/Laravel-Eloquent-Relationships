@@ -9,14 +9,13 @@ class Role extends Model
 {
     use HasFactory;
 
-    /**
-     * users
+     /**
+     * Relasi dengan model User (Many-to-Many).
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_role');  // Relasi many-to-many dengan tabel pivot 'user_role'
-        // belongsToMany(User::class, 'user_role') → Menunjukkan bahwa model ini memiliki hubungan many-to-many dengan model User, menggunakan tabel pivot user_role.
+        return $this->belongsToMany(User::class, 'user_role'); 
     }
 }
