@@ -12,8 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;  // Menggunakan fitur API tokens, factory, dan notifikasi
 
-    /**
-     * The attributes that are mass assignable.
+     /**
+     * Atribut yang dapat diisi secara massal.
      *
      * @var array<int, string>
      */
