@@ -14,10 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //get users form Model
+       // Mengambil semua data pengguna dari database, diurutkan berdasarkan yang terbaru.
         $users = User::latest()->get(); 
 
-        //passing user to view
+        // Mengirimkan data pengguna ke view "users.blade.php".
         return view('users', compact('users')); // Mengirim data ke view.
 
     }
