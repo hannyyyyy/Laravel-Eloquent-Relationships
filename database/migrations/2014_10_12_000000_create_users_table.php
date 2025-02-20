@@ -7,28 +7,38 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migration untuk membuat tabel "users".
      *
      * @return void
      */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            // Membuat kolom ID sebagai primary key dengan auto-increment
             $table->id();
+
+            // Kolom untuk menyimpan nama pengguna
             $table->string('name');
+
+            // Kolom untuk menyimpan email pengguna, harus unik
             $table->string('email')->unique();
+
+            // Kolom untuk menyimpan waktu verifikasi email, bisa null jika belum diverifikasi
             $table->timestamp('email_verified_at')->nullable();
+
+            // Kolom untuk menyimpan password pengguna
             $table->string('password');
+
+            // Kolom untuk token "remember me" saat login
             $table->rememberToken();
+
+            // Kolom timestamps otomatis (created_at & updated_at)
             $table->timestamps();
         });
-        // Kode ini digunakan untuk membuat tabel users dengan kolom yang umum digunakan dalam sistem autentikasi pengguna di Laravel.
-        // Menggunakan fungsi Schema::create() untuk mendefinisikan struktur tabel, dan $table->timestamps(), $table->rememberToken(), serta $table->string() untuk kolom-kolom yang relevan.
-        // Fungsi up() akan mengeksekusi migrasi, sementara down() digunakan untuk membatalkan migrasi.
     }
 
     /**
-     * Reverse the migrations.
+     * Membatalkan migration dengan menghapus tabel "users".
      *
      * @return void
      */
