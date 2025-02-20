@@ -3,10 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory; // Trait untuk factory
+use Illuminate\Foundation\Auth\User as Authenticatable; // Model autentikasi Laravel
+use Illuminate\Notifications\Notifiable; // Trait untuk notifikasi
+use Laravel\Sanctum\HasApiTokens; // Trait untuk API token authentication
 
 class User extends Authenticatable
 {
@@ -59,8 +59,6 @@ class User extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_role'); // Relasi many-to-many dengan tabel pivot 'user_role'
-        // user_id → Merujuk ke tabel users
-        //role_id → Merujuk ke tabel roles
+        return $this->belongsToMany(Role::class, 'user_role'); 
     }
 }
