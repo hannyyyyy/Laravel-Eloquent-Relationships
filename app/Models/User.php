@@ -29,12 +29,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'password', // Menyembunyikan password agar tidak ditampilkan saat model dikonversi ke array/JSON
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
+     /**
+     * Atribut yang akan di-cast ke tipe data tertentu.
      *
      * @var array<string, string>
      */
