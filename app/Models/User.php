@@ -23,8 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
+     /**
+     * Atribut yang disembunyikan saat serialisasi.
      *
      * @var array<int, string>
      */
