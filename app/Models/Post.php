@@ -10,12 +10,13 @@ class Post extends Model
     use HasFactory; // Mengaktifkan fitur factory untuk model ini
     
     /**
-     * comments
+     * Relasi dengan model Comment.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {
+        // Sebuah postingan (Post) bisa memiliki banyak komentar (Comment)
         return $this->hasMany(Comment::class);
         
     }
