@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers; // Menentukan namespace controller
 
-use App\Models\User;
+use App\Models\User; // Mengimpor model User untuk digunakan dalam controller
+
 
 class UserController extends Controller
 {    
