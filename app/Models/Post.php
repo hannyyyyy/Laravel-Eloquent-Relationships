@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory; // Mengaktifkan fitur factory untuk model ini
     
     /**
      * comments
@@ -17,7 +17,6 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
-        // hasMany(Comment::class) → Menunjukkan bahwa model ini memiliki banyak (hasMany) Comment.
-        // Digunakan pada model yang memiliki banyak entri di model lain yang terkait dengan foreign key.
+        
     }
 }
