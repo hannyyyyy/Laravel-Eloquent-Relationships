@@ -7,10 +7,10 @@ use App\Models\User; // Mengimpor model User untuk digunakan dalam controller
 
 class UserController extends Controller
 {    
-    /**
-     * index
+     /**
+     * Method index untuk mengambil dan menampilkan daftar pengguna.
      *
-     * @return void
+     * @return \Illuminate\View\View
      */
     public function index()
     {
