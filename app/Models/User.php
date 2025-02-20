@@ -42,23 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime', // Mengubah format timestamp untuk email_verified_at
     ];
     
-    /**
-     * phone
+        /**
+     * Relasi one-to-one dengan model Phone.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function phone()
     {
-    	return $this->hasOne(Phone::class);
+        return $this->hasOne(Phone::class); // Satu user memiliki satu nomor telepon
     }
     
     /**
-     * roles
+     * Relasi many-to-many dengan model Role.
      *
-     * @return void
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_role'); 
+        return $this->belongsToMany(Role::class, 'user_role'); // User bisa memiliki banyak role
     }
 }
